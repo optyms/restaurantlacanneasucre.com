@@ -1,0 +1,3433 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Canne à Sucre - Restaurant Authentique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #C2703D; /* Orange terracotta plus vibrant */
+            --color-primary-light: #E7904B;
+            --color-primary-dark: #A85C2F;
+            --color-secondary: #2E6E65; /* Vert émeraude élégant */
+            --color-secondary-light: #3D8F84;
+            --color-accent: #FFCB69; /* Or/jaune chaud */
+            --color-light: #FFF8F0; /* Blanc cassé chaud */
+            --color-dark: #292522; /* Brun très foncé presque noir */
+            --color-gray: #7A746E;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Poppins', sans-serif;
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --border-radius-small: 6px;
+            --border-radius-medium: 12px;
+            --border-radius-large: 24px;
+            --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-medium: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--color-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--color-primary);
+        }
+
+        .section-title-accent {
+            color: var(--color-primary);
+            font-style: italic;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: var(--border-radius-small);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            font-family: var(--font-body);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(194, 112, 61, 0.25);
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-medium);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(194, 112, 61, 0.35);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-reserve {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            border-radius: var(--border-radius-small);
+        }
+
+        .btn-reserve i {
+            transition: var(--transition-fast);
+        }
+
+        .btn-reserve:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Header Styles - Modern and Premium */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: transparent;
+            transition: var(--transition-medium);
+            padding: 20px 0;
+        }
+
+        .header.scrolled {
+            background-color: rgba(255, 248, 240, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            padding: 12px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;  /* Changé pour blanc par défaut */
+    text-decoration: none;
+    letter-spacing: 1px;
+    position: relative;
+    transition: var(--transition-medium);
+}
+
+.header.scrolled .logo {
+    color: var(--color-primary);
+}
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: var(--transition-medium);
+            position: relative;
+            font-size: 1.05rem;
+            padding: 5px 0;
+        }
+
+        .header.scrolled .nav-link {
+            color: var(--color-dark);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: var(--transition-medium);
+            opacity: 0;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            opacity: 1;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            transition: var(--transition-fast);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .header.scrolled .mobile-toggle {
+            color: var(--color-dark);
+        }
+
+        .mobile-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .header.scrolled .mobile-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hero Section - Dramatic and Impactful */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-dark);
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.4));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05);
+            animation: zoomOutSlow 15s forwards ease-out;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            margin-left: 8%;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.3s;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-left: 60px;
+        }
+
+        .hero-subtitle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 50px;
+            height: 1px;
+            background-color: var(--color-primary);
+            transform: translateY(-50%);
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.6s;
+            letter-spacing: 1px;
+        }
+
+        .hero-title span {
+            color: var(--color-primary);
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 540px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 0.9s;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--color-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-top: 24px;
+            box-shadow: var(--shadow-soft);
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .availability-badge i {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+
+        /* Decorative Elements */
+        .decoration-spice {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23C2703D" opacity="0.1" d="M50,0 C60,20 80,30 100,30 C80,40 70,60 70,100 C60,80 40,70 0,70 C20,60 30,40 30,0 C40,20 50,0 50,0 Z"></path></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .decoration-top-right {
+            top: 100px;
+            right: 50px;
+            transform: rotate(45deg);
+        }
+
+        .decoration-bottom-left {
+            bottom: 50px;
+            left: 50px;
+            transform: rotate(-135deg);
+        }
+
+        /* About section */
+        .about {
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            position: relative;
+        }
+
+        .about-text {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--color-primary);
+        }
+
+        .about-description {
+            margin-bottom: 32px;
+            font-size: 1.1rem;
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border-top: 3px solid var(--color-primary);
+            border-left: 3px solid var(--color-primary);
+            z-index: 1;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            border-bottom: 3px solid var(--color-primary);
+            border-right: 3px solid var(--color-primary);
+            z-index: 1;
+        }
+
+        .about-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: var(--transition-slow);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomOutSlow {
+            from {
+                transform: scale(1.05);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .about-image {
+                order: -1;
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-list {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 80%;
+                max-width: 350px;
+                height: calc(100vh - 70px);
+                padding: 50px 30px;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                gap: 25px;
+                z-index: 900;
+                border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+                backdrop-filter: blur(10px);
+                background-color: rgba(255, 248, 240, 0.96);
+            }
+
+            .nav-list.active {
+                right: 0;
+            }
+
+            .nav-link {
+                color: var(--color-dark);
+                font-size: 1.1rem;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 0 20px;
+            }
+
+            .hero-subtitle {
+                padding-left: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-subtitle::before {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+
+    /* Menu Section Styles */
+    .menu {
+        background-color: var(--color-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .menu-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .menu-tab {
+        padding: 15px 30px;
+        background-color: transparent;
+        border: none;
+        font-family: var(--font-body);
+        font-weight: 500;
+        font-size: 1.05rem;
+        color: var(--color-dark);
+        cursor: pointer;
+        transition: var(--transition-medium);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        border-radius: var(--border-radius-small);
+    }
+
+    .menu-tab::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-primary);
+        transform: translateY(100%);
+        transition: var(--transition-medium);
+        z-index: -1;
+    }
+
+    .menu-tab:hover {
+        color: var(--color-primary);
+    }
+
+    .menu-tab.active {
+        color: white;
+    }
+
+    .menu-tab.active::before {
+        transform: translateY(0);
+    }
+
+    .menu-content {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .menu-pane {
+        display: none;
+    }
+
+    .menu-pane.active {
+        display: block;
+        animation: fadeIn 0.6s ease;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    .menu-item {
+        position: relative;
+        background-color: white;
+        border-radius: var(--border-radius-medium);
+        padding: 20px;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition-medium);
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+    }
+
+    .menu-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background-color: var(--color-primary);
+        transition: var(--transition-medium);
+    }
+
+    .menu-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .menu-item:hover::before {
+        height: 100%;
+    }
+
+    .menu-item-image {
+        width: 120px;
+        height: 120px;
+        border-radius: var(--border-radius-small);
+        overflow: hidden;
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .menu-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-medium);
+    }
+
+    .menu-item-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+        opacity: 0;
+        transition: var(--transition-medium);
+    }
+
+    .menu-item:hover .menu-item-image img {
+        transform: scale(1.1);
+    }
+
+    .menu-item:hover .menu-item-image-overlay {
+        opacity: 1;
+    }
+
+    .menu-item-content {
+        flex: 1;
+    }
+
+    .menu-item-title {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+        color: var(--color-dark);
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .menu-item-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--color-primary);
+    }
+
+    .best-seller {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--color-primary);
+        color: white;
+        font-size: 0.7rem;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-left: 10px;
+        vertical-align: middle;
+        font-family: var(--font-body);
+        font-weight: normal;
+        box-shadow: 0 3px 6px rgba(194, 112, 61, 0.2);
+    }
+
+    .menu-item-description {
+        color: var(--color-gray);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .menu-item-price {
+        font-weight: 600;
+        color: var(--color-primary);
+        font-size: 1.2rem;
+        font-family: var(--font-heading);
+    }
+
+    .menu-item-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: white;
+        transition: var(--transition-medium);
+        cursor: help;
+    }
+
+    .menu-item-badge.vegetarian {
+        background-color: #4CAF50;
+    }
+
+    .menu-item-badge.spicy {
+        background-color: #F44336;
+    }
+
+    .menu-badge-tooltip {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--color-dark);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-medium);
+    }
+
+    .menu-badge-tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--color-dark) transparent transparent transparent;
+    }
+
+    .menu-item-badge:hover .menu-badge-tooltip {
+        opacity: 1;
+        visibility: visible;
+        top: -45px;
+    }
+
+    .menu-download {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    /* Featured Dishes Styles */
+    .featured {
+        background-color: white;
+        position: relative;
+    }
+
+    .featured-dishes {
+        display: flex;
+        flex-direction: column;
+        gap: 100px;
+    }
+
+    .featured-dish {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+    }
+
+    .featured-dish::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--color-primary-light), transparent);
+        opacity: 0.2;
+    }
+
+    .featured-dish:first-child::before {
+        display: none;
+    }
+
+    .featured-dish.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .featured-dish-image {
+        flex: 1;
+        border-radius: var(--border-radius-medium);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        position: relative;
+        transition: var(--transition-medium);
+    }
+
+    .featured-dish-image::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 70px;
+        height: 70px;
+        border-top: 3px solid var(--color-primary);
+        border-left: 3px solid var(--color-primary);
+        z-index: 1;
+        opacity: 0;
+        transition: var(--transition-medium);
+    }
+
+    .featured-dish-image::after {
+        content: '';
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 70px;
+        height: 70px;
+        border-bottom: 3px solid var(--color-primary);
+        border-right: 3px solid var(--color-primary);
+        z-index: 1;
+        opacity: 0;
+        transition: var(--transition-medium);
+    }
+
+    .featured-dish:hover .featured-dish-image {
+        transform: translateY(-10px);
+    }
+
+    .featured-dish:hover .featured-dish-image::before,
+    .featured-dish:hover .featured-dish-image::after {
+        opacity: 1;
+    }
+
+    .featured-dish-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: var(--transition-slow);
+    }
+
+    .featured-dish:hover .featured-dish-image img {
+        transform: scale(1.05);
+    }
+
+    .featured-dish-content {
+        flex: 1;
+        position: relative;
+        padding: 30px;
+    }
+
+    .featured-dish-badge {
+        display: inline-block;
+        background-color: var(--color-accent);
+        color: var(--color-dark);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(255, 203, 105, 0.3);
+    }
+
+    .featured-dish-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+        animation: shimmer 2s infinite;
+    }
+
+    .featured-dish-title {
+        font-family: var(--font-heading);
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 15px;
+        color: var(--color-dark);
+    }
+
+    .featured-dish-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: var(--color-primary);
+    }
+
+    .featured-dish-description {
+        margin-bottom: 30px;
+        font-size: 1.05rem;
+        color: var(--color-gray);
+        line-height: 1.8;
+    }
+
+    .dish-tags {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .dish-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 18px;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-radius: 50px;
+        font-size: 0.9rem;
+        color: var(--color-dark);
+        transition: var(--transition-medium);
+    }
+
+    .dish-tag:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+    }
+
+    .dish-tag i {
+        color: var(--color-primary);
+    }
+
+    /* Reservation CTA Styles */
+    .reservation-cta {
+        background-color: var(--color-primary);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .reservation-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('/api/placeholder/1200/800');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.08;
+        filter: blur(2px);
+    }
+
+    .reservation-cta::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, var(--color-primary-dark), var(--color-primary));
+        opacity: 0.9;
+        z-index: 0;
+    }
+
+    .reservation-content {
+        position: relative;
+        z-index: 1;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        padding: 60px;
+        border-radius: var(--border-radius-medium);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .reservation-title {
+        font-family: var(--font-heading);
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .reservation-text {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    .reservation-form {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        text-align: left;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: var(--border-radius-small);
+        background-color: rgba(255, 255, 255, 0.9);
+        font-family: var(--font-body);
+        font-size: 1rem;
+        transition: var(--transition-medium);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+        background-color: white;
+    }
+
+    .reservation-form button {
+        grid-column: 1 / -1;
+        margin-top: 20px;
+        background-color: white;
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+
+    .reservation-form button:hover {
+        background-color: var(--color-light);
+        color: var(--color-primary-dark);
+    }
+
+    .reservation-info {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0.9;
+        transition: var(--transition-medium);
+    }
+
+    .info-item:hover {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+
+    .info-item i {
+        font-size: 1.3rem;
+    }
+
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+        .menu-grid {
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+    }
+
+    @media (max-width: 992px) {
+        .menu-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-dish {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .featured-dish.reverse {
+            flex-direction: column;
+        }
+
+        .featured-dish-content {
+            padding: 0;
+        }
+
+        .reservation-content {
+            padding: 40px 30px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .reservation-form {
+            grid-template-columns: 1fr;
+        }
+
+        .menu-item {
+            flex-direction: column;
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 180px;
+        }
+        
+        .menu-item-badge {
+            top: 160px;
+            right: 20px;
+        }
+    }
+
+
+
+        /* Testimonials Styles */
+        .testimonials {
+        background-color: var(--color-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testimonial-platform {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .platform-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--color-dark);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition-medium);
+        padding: 12px 24px;
+        border-radius: 50px;
+        background-color: white;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .platform-link:hover {
+        color: var(--color-primary);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .platform-link i {
+        font-size: 1.3rem;
+    }
+
+    /* Team Section Styles */
+    .team {
+        background-color: white;
+        position: relative;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 40px;
+    }
+
+    .team-member {
+        background-color: var(--color-light);
+        border-radius: var(--border-radius-medium);
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+        transition: var(--transition-medium);
+    }
+
+    .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .member-image {
+        width: 100%;
+        height: 320px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .member-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-slow);
+    }
+
+    .member-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+        opacity: 0;
+        transition: var(--transition-medium);
+    }
+
+    .team-member:hover .member-image img {
+        transform: scale(1.05);
+    }
+
+    .team-member:hover .member-image-overlay {
+        opacity: 1;
+    }
+
+    .member-info {
+        padding: 30px;
+        text-align: center;
+        position: relative;
+    }
+
+    .member-name {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--color-dark);
+    }
+
+    .member-role {
+        color: var(--color-primary);
+        font-weight: 500;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    .member-role::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background-color: var(--color-primary);
+    }
+
+    .member-bio {
+        color: var(--color-gray);
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .member-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .member-social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--color-primary);
+        color: white;
+        border-radius: 50%;
+        transition: var(--transition-medium);
+        transform: translateY(0);
+    }
+
+    .member-social-link:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-3px);
+    }
+
+    /* FAQ Section Styles */
+    .faq {
+        background-color: var(--color-light);
+    }
+
+    .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        background-color: white;
+        border-radius: var(--border-radius-medium);
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        transition: var(--transition-medium);
+    }
+
+    .faq-item:hover {
+        box-shadow: var(--shadow-medium);
+    }
+
+    .faq-question {
+        padding: 25px 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition-medium);
+        position: relative;
+    }
+
+    .faq-question::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background-color: var(--color-primary);
+        opacity: 0;
+        transition: var(--transition-medium);
+    }
+
+    .faq-question:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-item.active .faq-question {
+        background-color: rgba(194, 112, 61, 0.05);
+    }
+
+    .faq-item.active .faq-question::before {
+        opacity: 1;
+    }
+
+    .faq-question h3 {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        margin: 0;
+        color: var(--color-dark);
+    }
+
+    .faq-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+        color: white;
+        font-size: 0.8rem;
+        transition: var(--transition-medium);
+        flex-shrink: 0;
+        margin-left: 20px;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(135deg);
+        background-color: var(--color-dark);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 1000px;
+        transition: max-height 0.6s ease-in-out;
+    }
+
+    .faq-answer p {
+        padding: 0 30px 25px;
+        color: var(--color-gray);
+        line-height: 1.8;
+    }
+
+    /* Contact Section Styles */
+    .contact {
+        background-color: white;
+        position: relative;
+    }
+
+    .contact-container {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+    }
+
+    .contact-info {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .info-card {
+        background-color: var(--color-light);
+        padding: 30px 20px;
+        border-radius: var(--border-radius-medium);
+        text-align: center;
+        transition: var(--transition-medium);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .info-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--color-primary-light), transparent);
+        opacity: 0;
+        transition: var(--transition-medium);
+        z-index: -1;
+    }
+
+    .info-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .info-card:hover::before {
+        opacity: 0.1;
+    }
+
+    .info-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        box-shadow: 0 5px 15px rgba(194, 112, 61, 0.15);
+        transition: var(--transition-medium);
+    }
+
+    .info-card:hover .info-icon {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(194, 112, 61, 0.25);
+    }
+
+    .info-card h3 {
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--color-dark);
+    }
+
+    .info-card p {
+        color: var(--color-gray);
+        line-height: 1.7;
+    }
+
+    .contact-map {
+        flex: 1;
+        border-radius: var(--border-radius-medium);
+        overflow: hidden;
+        box-shadow: var(--shadow-medium);
+        position: relative;
+    }
+
+    .contact-map::before {
+        content: '';
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 60px;
+        height: 60px;
+        border-top: 3px solid var(--color-primary);
+        border-left: 3px solid var(--color-primary);
+        z-index: 1;
+    }
+
+    .contact-map::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        width: 60px;
+        height: 60px;
+        border-bottom: 3px solid var(--color-primary);
+        border-right: 3px solid var(--color-primary);
+        z-index: 1;
+    }
+
+    @media (max-width: 992px) {
+        .contact-container {
+            flex-direction: column;
+        }
+
+        .contact-info {
+            width: 100%;
+        }
+
+        .contact-map {
+            width: 100%;
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-info {
+            grid-template-columns: 1fr;
+        }
+
+        .platform-link {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+
+/* Additional Styles for Notification */
+.reservation-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: white;
+    color: var(--color-dark);
+    padding: 20px 25px;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: var(--transition-medium);
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.reservation-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.reservation-notification i {
+    color: #4CAF50;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+    .reservation-notification {
+        left: 20px;
+        right: 20px;
+        max-width: calc(100% - 40px);
+    }
+}
+
+/* Animation Classes */
+.aos-animate {
+    animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">La Canne à Sucre</a>
+                <button class="mobile-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="nav-list" id="nav-menu">
+                        <li><a href="#" class="nav-link">Accueil</a></li>
+                        <li><a href="#menu" class="nav-link">Carte</a></li>
+                        <li><a href="#testimonials" class="nav-link">Avis</a></li>
+                        <li><a href="#team" class="nav-link">Notre équipe</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="decoration-spice decoration-top-right"></div>
+        <div class="decoration-spice decoration-bottom-left"></div>
+        <img src="./Medias/images/veau-bannanes-plantain-focus.jpg" alt="Plat signature du restaurant" class="hero-bg">
+        <div class="container">
+            <div class="hero-content">
+                <!--p class="hero-subtitle">Restaurant authentique</p-->
+                <h1 class="hero-title">Cuisine <span>exceptionnelle</span>, saveurs inoubliables</h1>
+                <p class="hero-description">Découvrez une expérience culinaire unique dans un cadre chaleureux et authentique. Notre chef vous propose des plats préparés avec passion, à base de produits frais et de saison.</p>
+                <div class="hero-cta">
+                    <a href="#reservation" class="btn btn-reserve">
+                        <i class="fas fa-calendar-alt"></i>
+                        Réserver pour ce soir
+                    </a>
+                    <a href="#menu" class="btn btn-secondary">Découvrir notre carte</a>
+                </div>
+                <div class="availability-badge">
+                    <i class="fas fa-check-circle"></i>
+                    Il reste seulement 5 tables disponibles ce soir !
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="about-title">Notre histoire et nos valeurs</h2>
+                    <p class="about-description">Depuis plus de 15 ans, La Canne à Sucre vous accueille dans un cadre convivial pour vous faire découvrir une cuisine authentique aux saveurs exotiques. Notre chef Madame Chantale PEPLOWSKI s'inspire des traditions culinaires de son pays d'origine pour créer des plats savoureux et originaux.</p>
+                    <p class="about-description">Nous sélectionnons avec soin nos ingrédients pour vous garantir une qualité irréprochable. Tous nos plats sont préparés sur place, avec des produits frais et de saison.</p>
+                    <a href="#reservation" class="btn btn-reserve">
+                        <i class="fas fa-utensils"></i>
+                        Vivre l'expérience
+                    </a>
+                </div>
+                <div class="about-image">
+                    <img src="C:\Users\utilisateurpc\OneDrive\Money-machines\SiteWebCanneASucre\Medias\images\siteV2\ambiance-restaurant-la-canne-a-sucre-Ales.jpg" alt="Notre restaurant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Gallery Section -->
+<section id="gallery" class="section gallery">
+    <div class="decoration-spice decoration-bottom-left"></div>
+    <div class="container">
+        <h2 class="section-title">Notre <span class="section-title-accent">galerie</span></h2>
+        
+        <div class="gallery-slider">
+            <div class="gallery-track">
+                <!-- Les images et vidéos seront chargées dynamiquement ici -->
+            </div>
+            
+            <button class="gallery-arrow gallery-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="gallery-arrow gallery-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Modal -->
+<div class="gallery-modal">
+    <div class="gallery-modal-content">
+        <button class="gallery-modal-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="gallery-modal-media-container">
+            <!-- Media content (image/video) will be inserted here -->
+        </div>
+    </div>
+</div>
+
+<!-- CSS for Gallery -->
+<style>
+    /* Gallery Section Styles */
+    .gallery {
+        background-color: var(--color-light);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-slider {
+        position: relative;
+        margin: 0 auto;
+        max-width: 1200px;
+        height: 450px;
+        overflow: hidden;
+        border-radius: var(--border-radius-medium);
+        box-shadow: var(--shadow-medium);
+    }
+
+    .gallery-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+    }
+
+    .gallery-item {
+        min-width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.02);
+    }
+
+    .gallery-item img, 
+    .gallery-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:hover video {
+        transform: scale(1.05);
+    }
+
+    .gallery-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::before {
+        opacity: 1;
+    }
+
+    .gallery-item-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item-play i {
+        font-size: 2rem;
+        color: var(--color-primary);
+    }
+
+    .gallery-item.video:hover .gallery-item-play {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .gallery-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+        cursor: pointer;
+        z-index: 10;
+        opacity: 0;
+        transition: var(--transition-medium);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-prev {
+        left: 20px;
+    }
+
+    .gallery-next {
+        right: 20px;
+    }
+
+    .gallery-slider:hover .gallery-arrow {
+        opacity: 1;
+    }
+
+    .gallery-arrow:hover {
+        background-color: white;
+        color: var(--color-primary-dark);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    /* Gallery Modal */
+    .gallery-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .gallery-modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .gallery-modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        overflow: hidden;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        border-radius: var(--border-radius-medium);
+        transform: scale(0.9);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .gallery-modal.active .gallery-modal-content {
+        transform: scale(1);
+    }
+
+    .gallery-modal-media-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gallery-modal-media-container img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: var(--border-radius-small);
+    }
+
+    .gallery-modal-media-container video {
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: var(--border-radius-small);
+    }
+
+    .gallery-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: var(--color-dark);
+        cursor: pointer;
+        z-index: 10;
+        transition: var(--transition-medium);
+    }
+
+    .gallery-modal-close:hover {
+        background-color: white;
+        transform: rotate(90deg);
+    }
+
+    /* Caption for gallery items */
+    .gallery-item-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        color: white;
+        z-index: 3;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-item-caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item-caption h3 {
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+
+    .gallery-item-caption p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .gallery-slider {
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .gallery-slider {
+            height: 350px;
+        }
+
+        .gallery-item-play {
+            width: 60px;
+            height: 60px;
+        }
+
+        .gallery-item-play i {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .gallery-slider {
+            height: 300px;
+        }
+
+        .gallery-arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<!-- JavaScript for Gallery -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Simulated media gallery (in reality, this would be populated from your server or file system)
+    // Replace these with actual paths to your media files in c:\medias
+    const galleryItems = [
+        { type: 'image', src: './Medias/images/salade-de-crevettes-a-la-mangue.jpeg', caption: 'Salade de crevettes à la mangue', description: 'Notre entrée signature aux saveurs exotiques' },
+        { type: 'video', src: './Medias/images/Medias/videos/restaurant-ambiance.mp4', caption: 'Ambiance du restaurant', description: 'Découvrez l\'atmosphère chaleureuse de La Canne à Sucre' },
+        { type: 'image', src: './Medias/images/Ndole-boeuf-restaurant-la-canne-a-sucre-ales.jpg', caption: 'Ndolé Royal', description: 'Le plat traditionnel camerounais revisité par notre chef' },
+        { type: 'image', src: './Medias/images/cocktail-signature.jpg', caption: 'Cocktail Canne à Sucre', description: 'Notre cocktail signature à base de rhum et jus de canne frais' },
+        { type: 'image', src: './Medias/images/veau-bannanes-plantain-focus.jpg', caption: 'Veau bannane plantain', description: 'Veau banane plantain' }
+    ];
+
+    const galleryTrack = document.querySelector('.gallery-track');
+    const modal = document.querySelector('.gallery-modal');
+    const modalMediaContainer = document.querySelector('.gallery-modal-media-container');
+    const modalClose = document.querySelector('.gallery-modal-close');
+    const prevButton = document.querySelector('.gallery-prev');
+    const nextButton = document.querySelector('.gallery-next');
+    
+    let currentIndex = 0;
+    let intervalId;
+
+    // Populate the gallery
+    function populateGallery() {
+        galleryItems.forEach((item, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = `gallery-item ${item.type === 'video' ? 'video' : ''}`;
+            galleryItem.dataset.index = index;
+            
+            if (item.type === 'image') {
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.caption}">
+                    <div class="gallery-item-caption">
+                        <h3>${item.caption}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+            } else if (item.type === 'video') {
+                galleryItem.innerHTML = `
+                    <video src="${item.src}" loop muted>
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    <div class="gallery-item-play">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-item-caption">
+                        <h3>${item.caption}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+            }
+            
+            galleryTrack.appendChild(galleryItem);
+            
+            // Add click event to open modal
+            galleryItem.addEventListener('click', function() {
+                openModal(index);
+            });
+        });
+    }
+
+    // Initialize gallery
+    function initGallery() {
+        populateGallery();
+        updateGallery();
+        startAutoSlide();
+        
+        // Event listeners for navigation
+        prevButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            goToPrevSlide();
+        });
+        
+        nextButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            goToNextSlide();
+        });
+        
+        // Close modal when clicking on close button or outside content
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    navigateModalPrev();
+                } else if (e.key === 'ArrowRight') {
+                    navigateModalNext();
+                }
+            }
+        });
+    }
+
+    // Update gallery position
+    function updateGallery() {
+        galleryTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Auto slide functionality
+    function startAutoSlide() {
+        clearInterval(intervalId);
+        intervalId = setInterval(() => {
+            goToNextSlide();
+        }, 5000); // Change slide every 5 seconds
+    }
+
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+
+    // Navigation functions
+    function goToPrevSlide() {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        updateGallery();
+        resetAutoSlide();
+    }
+
+    function goToNextSlide() {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        updateGallery();
+        resetAutoSlide();
+    }
+
+    function resetAutoSlide() {
+        stopAutoSlide();
+        startAutoSlide();
+    }
+
+    // Modal functions
+    function openModal(index) {
+        stopAutoSlide();
+        currentIndex = index;
+        
+        // Clear previous content
+        modalMediaContainer.innerHTML = '';
+        
+        const item = galleryItems[index];
+        
+        if (item.type === 'image') {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.caption;
+            modalMediaContainer.appendChild(img);
+        } else if (item.type === 'video') {
+            const video = document.createElement('video');
+            video.src = item.src;
+            video.controls = true;
+            video.autoplay = true;
+            modalMediaContainer.appendChild(video);
+        }
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling while modal is open
+    }
+
+    function closeModal() {
+        startAutoSlide();
+        modal.classList.remove('active');
+        
+        // Stop video if playing
+        const video = modalMediaContainer.querySelector('video');
+        if (video) {
+            video.pause();
+        }
+        
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    function navigateModalPrev() {
+        const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        openModal(prevIndex);
+    }
+
+    function navigateModalNext() {
+        const nextIndex = (currentIndex + 1) % galleryItems.length;
+        openModal(nextIndex);
+    }
+
+    // Initialize gallery
+    initGallery();
+});
+</script>
+
+
+
+
+
+
+
+    <!-- Menu Section -->
+    <section id="menu" class="section menu">
+        <div class="decoration-spice decoration-top-right"></div>
+        <div class="container">
+            <h2 class="section-title">Notre <span class="section-title-accent">Carte</span></h2>
+            
+            <!-- Menu Tabs Navigation -->
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="entrees">Entrées</button>
+                <button class="menu-tab" data-tab="plats">Plats</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+                <button class="menu-tab" data-tab="boissons">Cocktails & Vins</button>
+            </div>
+            
+            <!-- Menu Content -->
+            <div class="menu-content">
+                <!-- Entrées -->
+                <div class="menu-pane active" id="entrees">
+                    <div class="menu-grid">
+                        <div class="menu-item" data-aos="fade-up">
+                            <div class="menu-item-image">
+                                <img src="C:\Users\utilisateurpc\OneDrive\Money-machines\SiteWebCanneASucre\Medias\images\siteV2\salade-de-crevettes-a-la-mangue.jpeg" alt="Salade de crevettes à la mangue">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Salade de crevettes à la mangue</h3>
+                                <p class="menu-item-description">Crevettes marinées, mangue fraîche, concombre et avocat</p>
+                                <div class="menu-item-price">9,50 €</div>
+                            </div>
+                            <div class="menu-item-badge vegetarian">
+                                <i class="fas fa-leaf"></i>
+                                <span class="menu-badge-tooltip">Végétarien</span>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/accras-de-morue.jpeg" alt="Accras de morue">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Accras de morue</h3>
+                                <p class="menu-item-description">Beignets de morue préparés selon la recette traditionnelle</p>
+                                <div class="menu-item-price">8,00 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/Samoussas-aux-legumes.jpeg" alt="Samoussas aux légumes">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Samoussas aux légumes</h3>
+                                <p class="menu-item-description">Chaussons croustillants de légumes épicés</p>
+                                <div class="menu-item-price">7,50 €</div>
+                            </div>
+                            <div class="menu-item-badge vegetarian">
+                                <i class="fas fa-leaf"></i>
+                                <span class="menu-badge-tooltip">Végétarien</span>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/Tartare-de-poisson-frais.jpeg" alt="Tartare de poisson frais">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Tartare de poisson frais</h3>
+                                <p class="menu-item-description">Dés de poisson frais mariné au citron vert et épices</p>
+                                <div class="menu-item-price">10,50 €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Plats -->
+                <div class="menu-pane" id="plats">
+                    <div class="menu-grid">
+                        <div class="menu-item" data-aos="fade-up">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/Ndole-boeuf-restaurant-la-canne-a-sucre-ales.jpg" alt="Ndolé Royal">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Ndolé Royal <span class="best-seller">★ Notre spécialité</span></h3>
+                                <p class="menu-item-description">Un grand classique de la gastronomie camerounaise, mijoté avec des crevettes, du bœuf et des épinards</p>
+                                <div class="menu-item-price">16,90 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/poisson-braise-la-canne-a-sucre-ales.jpg" alt="Poisson braisé du Cameroun">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Poisson braisé du Cameroun</h3>
+                                <p class="menu-item-description">Poisson entier mariné aux épices et cuit au feu de bois, accompagné de bananes plantain</p>
+                                <div class="menu-item-price">18,50 €</div>
+                            </div>
+                            <div class="menu-item-badge spicy">
+                                <i class="fas fa-pepper-hot"></i>
+                                <span class="menu-badge-tooltip">Épicé</span>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Poulet Yassa">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Poulet Yassa</h3>
+                                <p class="menu-item-description">Poulet mariné au citron et oignons, accompagné de riz blanc parfumé</p>
+                                <div class="menu-item-price">15,90 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Mafé de légumes">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Mafé de légumes</h3>
+                                <p class="menu-item-description">Ragoût onctueux à la sauce d'arachide et légumes de saison</p>
+                                <div class="menu-item-price">14,50 €</div>
+                            </div>
+                            <div class="menu-item-badge vegetarian">
+                                <i class="fas fa-leaf"></i>
+                                <span class="menu-badge-tooltip">Végétarien</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="menu-pane" id="desserts">
+                    <div class="menu-grid">
+                        <div class="menu-item" data-aos="fade-up">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Mousse à la noix de coco">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Mousse à la noix de coco</h3>
+                                <p class="menu-item-description">Mousse légère à la noix de coco, coulis de fruits exotiques</p>
+                                <div class="menu-item-price">6,50 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Ananas caramélisé">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Ananas caramélisé</h3>
+                                <p class="menu-item-description">Ananas rôti au miel, accompagné de glace vanille</p>
+                                <div class="menu-item-price">7,50 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Gâteau au chocolat et banane">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Gâteau au chocolat et banane</h3>
+                                <p class="menu-item-description">Gâteau moelleux au chocolat et banane, crème anglaise</p>
+                                <div class="menu-item-price">8,00 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Café/thé gourmand">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Café/thé gourmand</h3>
+                                <p class="menu-item-description">Café ou thé accompagné de mignardises</p>
+                                <div class="menu-item-price">8,50 €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Boissons -->
+                <div class="menu-pane" id="boissons">
+                    <div class="menu-grid">
+                        <div class="menu-item" data-aos="fade-up">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images/cocktail-signature.jpg" alt="Cocktail Canne à Sucre">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Cocktail Canne à Sucre</h3>
+                                <p class="menu-item-description">Rhum, jus de canne à sucre frais, citron vert et menthe</p>
+                                <div class="menu-item-price">9,00 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Bissap">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Bissap</h3>
+                                <p class="menu-item-description">Boisson rafraîchissante à base de fleurs d'hibiscus</p>
+                                <div class="menu-item-price">4,50 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Vin rouge Bordeaux">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Vin rouge Bordeaux</h3>
+                                <p class="menu-item-description">Château Lesparre - Bouteille</p>
+                                <div class="menu-item-price">24,00 €</div>
+                            </div>
+                        </div>
+                        
+                        <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="menu-item-image">
+                                <img src="./Medias/images" alt="Vin blanc sec">
+                                <div class="menu-item-image-overlay"></div>
+                            </div>
+                            <div class="menu-item-content">
+                                <h3 class="menu-item-title">Vin blanc sec</h3>
+                                <p class="menu-item-description">Sauvignon - Verre</p>
+                                <div class="menu-item-price">4,50 €</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-download">
+                <a file="./Medias/images/Medias/images/googleBusinessPage/carte-restaurant-la-canne-a-sucre-ales.jpeg" class="btn btn-secondary">
+                    <i class="fas fa-download"></i>
+                    Télécharger notre carte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section id="featured" class="section featured">
+        <div class="decoration-spice decoration-bottom-left"></div>
+        <div class="container">
+            <h2 class="section-title">Nos plats <span class="section-title-accent">phares</span></h2>
+            
+            <div class="featured-dishes">
+                <div class="featured-dish" data-aos="fade-up">
+                    <div class="featured-dish-image">
+                        <img src="C:\Users\utilisateurpc\OneDrive\Money-machines\SiteWebCanneASucre\Medias\images\siteV2\Ndole-boeuf-restaurant-la-canne-a-sucre-ales.jpg" alt="Ndolé Royal - Restaurant la canne à sucre Alès">
+                    </div>
+                    <div class="featured-dish-content">
+                        <div class="featured-dish-badge">Spécialité de la maison</div>
+                        <h3 class="featured-dish-title">Ndolé Royal</h3>
+                        <p class="featured-dish-description">Le Ndolé est un grand classique de la gastronomie camerounaise, mijoté avec des crevettes, du bœuf et des épinards. Ce plat emblématique offre un équilibre parfait entre onctuosité et saveurs exotiques, qui ravira vos papilles. Servi avec des pommes de terre et des bananes plantain frites.</p>
+                        <a href="#reservation" class="btn btn-reserve">
+                            <i class="fas fa-utensils"></i>
+                            Réserver pour déguster
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="featured-dish reverse" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-dish-image">
+                        <img src="C:\Users\utilisateurpc\OneDrive\Money-machines\SiteWebCanneASucre\Medias\images\siteV2\poisson-braise.jpg" alt="Poisson braisé du Cameroun">
+                    </div>
+                    <div class="featured-dish-content">
+                        <div class="featured-dish-badge">Tradition culinaire</div>
+                        <h3 class="featured-dish-title">Poisson braisé du Cameroun</h3>
+                        <p class="featured-dish-description">Ce plat traditionnel est préparé avec un poisson entier fraîchement pêché, mariné dans un mélange d'épices secret, puis grillé à la perfection. Servi avec une sauce piquante maison et accompagné de légumes grillés et de manioc, il offre une expérience gustative incomparable qui vous transportera directement au Cameroun.</p>
+                        <div class="dish-tags">
+                            <span class="dish-tag"><i class="fas fa-pepper-hot"></i> Épicé</span>
+                            <span class="dish-tag"><i class="fas fa-fish"></i> Poisson frais</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation CTA -->
+    <section id="reservation" class="section reservation-cta">
+        <div class="container">
+            <div class="reservation-content" data-aos="fade-up">
+                <h2 class="reservation-title">Réservez votre table maintenant</h2>
+                <p class="reservation-text">Pour une expérience culinaire inoubliable dans un cadre chaleureux et authentique.</p>
+                
+                <form class="reservation-form">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Heure</label>
+                        <select id="time" required>
+                            <option value="">Choisir une heure</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="19:00">19:00</option>
+                            <option value="19:30">19:30</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:30">20:30</option>
+                            <option value="21:00">21:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="persons">Nombre de convives</label>
+                        <select id="persons" required>
+                            <option value="">Sélectionner</option>
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5 personnes</option>
+                            <option value="6">6 personnes</option>
+                            <option value="7">7 personnes</option>
+                            <option value="8">8 personnes</option>
+                            <option value="more">Plus de 8 personnes</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-reserve">
+                        <i class="fas fa-calendar-check"></i>
+                        Confirmer ma réservation
+                    </button>
+                </form>
+                
+                <div class="reservation-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Ou appelez-nous au <strong>01 23 45 67 89</strong></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Ouvert du mardi au dimanche, 12h-14h30 / 19h-22h30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section testimonials">
+        <div class="decoration-spice decoration-top-right"></div>
+        <div class="container">
+            <h2 class="section-title">Avis <span class="section-title-accent">clients</span></h2>
+            
+            <!-- Script pour les avis tiers -->
+            <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+            <iframe class='lc_reviews_widget' src='https://reputationhub.site/reputation/widgets/review_widget/Ww3NCOpB53VvP4zREZz6' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%; border-radius: var(--border-radius-medium); overflow: hidden; box-shadow: var(--shadow-soft);'></iframe>
+            
+            <div class="testimonial-platform">
+                <a href="#" class="platform-link" target="_blank">
+                    <i class="fab fa-google"></i> Voir tous nos avis sur Google
+                </a>
+                <a href="#" class="platform-link" target="_blank">
+                    <i class="fab fa-tripadvisor"></i> Découvrir nos avis sur TripAdvisor
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team">
+        <div class="decoration-spice decoration-bottom-left"></div>
+        <div class="container">
+            <h2 class="section-title">Notre <span class="section-title-accent">équipe</span></h2>
+            
+            <div class="team-grid">
+                <div class="team-member" data-aos="fade-up">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Madame Chantale PEPLOWSKI">
+                        <div class="member-image-overlay"></div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Madame Chantale PEPLOWSKI</h3>
+                        <p class="member-role">Chef Cuisinière</p>
+                        <p class="member-bio">Originaire du Cameroun, Madame Chantale apporte son savoir-faire et sa passion pour la cuisine de son pays. Elle crée des plats authentiques aux saveurs exceptionnelles.</p>
+                        <div class="member-social">
+                            <a href="#" class="member-social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="member-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Jean Arnaud">
+                        <div class="member-image-overlay"></div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Jean Arnaud</h3>
+                        <p class="member-role">Chef Pâtissier</p>
+                        <p class="member-bio">Avec plus de 15 ans d'expérience, Jean marie avec talent les saveurs traditionnelles françaises aux influences exotiques pour créer des desserts uniques.</p>
+                        <div class="member-social">
+                            <a href="#" class="member-social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="member-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Armelle Yanga">
+                        <div class="member-image-overlay"></div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Armelle Yanga</h3>
+                        <p class="member-role">Responsable de Salle</p>
+                        <p class="member-bio">Souriante et attentionnée, Armelle veille à ce que votre expérience soit parfaite. Elle connaît parfaitement les plats et saura vous conseiller.</p>
+                        <div class="member-social">
+                            <a href="#" class="member-social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="member-social-link"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq">
+        <div class="container">
+            <h2 class="section-title">Questions <span class="section-title-accent">fréquentes</span></h2>
+            
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>Quels types de plats proposez-vous ?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Notre restaurant propose une cuisine africaine authentique, principalement inspirée des traditions culinaires camerounaises. Vous y trouverez des plats mijotés, des grillades, des spécialités de poisson et des accompagnements traditionnels comme le manioc et les bananes plantain. Nous proposons également des options végétariennes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>Les plats sont-ils épicés ?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Certains de nos plats sont naturellement épicés, mais nous adaptons le niveau d'épices selon vos préférences. N'hésitez pas à nous indiquer si vous préférez une version plus ou moins relevée. Les plats épicés sont clairement indiqués sur notre carte avec l'icône <i class="fas fa-pepper-hot"></i>.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Faut-il réserver pour venir manger chez vous ?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La réservation est fortement recommandée, surtout les soirs de week-end où nous affichons souvent complet. Vous pouvez réserver directement sur notre site, par téléphone au 01 23 45 67 89 ou par email à reservation@lacanneaasucre.com. Pour les groupes de plus de 8 personnes, merci de nous contacter directement.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <h3>Proposez-vous des formules pour le déjeuner ?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, nous proposons une formule déjeuner en semaine à 19,90€ qui comprend une entrée + plat ou plat + dessert, avec un verre de vin ou une boisson fraîche. Cette formule change chaque semaine pour vous faire découvrir différentes spécialités.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <h3>Peut-on privatiser le restaurant pour un événement ?</h3>
+                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument ! Nous proposons la privatisation complète ou partielle du restaurant pour vos événements professionnels ou privés (anniversaires, mariages, séminaires...). Nous pouvons accueillir jusqu'à 60 personnes et élaborer des menus sur mesure adaptés à votre budget et à vos envies. Contactez-nous pour obtenir un devis personnalisé.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact et <span class="section-title-accent">accès</span></h2>
+            
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-up">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Adresse</h3>
+                        <p>123 Rue de la Gastronomie<br>75011 Paris</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Téléphone</h3>
+                        <p>01 23 45 67 89</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>contact@lacanneaasucre.com</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Horaires d'ouverture</h3>
+                        <p>Mardi - Dimanche<br>12h00 - 14h30 | 19h00 - 22h30<br>Fermé le lundi</p>
+                    </div>
+                </div>
+                
+                <div class="contact-map" data-aos="fade-up" data-aos-delay="100">
+                    <!--iframe src="/api/placeholder/600/450" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe-->
+                    <iframe width="100%" height="450"   style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?width=550&amp;height=300&amp;hl=en&amp;q=6%20Rue%20du%2014%20juillet,%20Al%C3%A8s%2030100%20France+(Restaurant%20la%20canne%20%C3%A0%20sucre%20Al%C3%A8s)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps vehicle tracker</a></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="decoration-spice decoration-top-right"></div>
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-branding">
+                    <a href="#" class="footer-logo">La Canne à Sucre</a>
+                    <p class="footer-tagline">Cuisine authentique et saveurs exotiques</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Liens rapides</h3>
+                    <ul class="footer-nav">
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#menu">Carte</a></li>
+                        <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#team">Notre équipe</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos offres spéciales et actualités</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" class="btn-subscribe">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="copyright">© 2025 La Canne à Sucre. Tous droits réservés.</p>
+            <div class="footer-legal">
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Floating Reservation Button (Mobile) -->
+<div class="float-reservation" id="float-reservation">
+    <a href="#reservation" class="btn btn-reserve">
+        <i class="fas fa-calendar-alt"></i>
+        Réserver
+    </a>
+</div>
+
+<style>
+/* Footer Styles */
+.footer {
+    background-color: var(--color-dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-top {
+    padding: 100px 0 60px;
+    position: relative;
+}
+
+.footer-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="white" opacity="0.03" d="M50,0 C60,20 80,30 100,30 C80,40 70,60 70,100 C60,80 40,70 0,70 C20,60 30,40 30,0 C40,20 50,0 50,0 Z"></path></svg>');
+    background-size: 200px;
+    background-repeat: repeat;
+    opacity: 0.3;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 60px;
+    position: relative;
+}
+
+.footer-logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+    transition: var(--transition-medium);
+}
+
+.footer-logo:hover {
+    color: var(--color-primary-light);
+}
+
+.footer-tagline {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: var(--transition-medium);
+}
+
+.social-link:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-primary);
+}
+
+.footer-nav {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 15px;
+}
+
+.footer-nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition-medium);
+    position: relative;
+    padding-left: 15px;
+    display: inline-block;
+}
+
+.footer-nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    opacity: 0.7;
+    transition: var(--transition-medium);
+}
+
+.footer-nav a:hover {
+    color: white;
+    padding-left: 20px;
+}
+
+.footer-nav a:hover::before {
+    opacity: 1;
+    left: 5px;
+}
+
+.footer-newsletter p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.newsletter-form {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-small);
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition-medium);
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-subscribe {
+    padding: 0 20px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.btn-subscribe:hover {
+    background-color: var(--color-primary-light);
+}
+
+.footer-bottom {
+    padding: 25px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition-medium);
+}
+
+.footer-legal a:hover {
+    color: white;
+}
+
+/* Floating Reservation Button */
+.float-reservation {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    display: none;
+    animation: pulse 2s infinite;
+}
+
+.float-reservation .btn {
+    box-shadow: 0 5px 20px rgba(194, 112, 61, 0.3);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(194, 112, 61, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(194, 112, 61, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 5px 20px rgba(194, 112, 61, 0.3);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .footer-top {
+        padding: 80px 0 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        gap: 40px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-legal {
+        justify-content: center;
+    }
+
+    .float-reservation {
+        display: block;
+    }
+}
+</style>
+
+<!-- Scripts -->
+<script>
+// Menu Toggle for Mobile
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+    
+    // Header Scroll Effect
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Menu Tabs
+    const menuTabs = document.querySelectorAll('.menu-tab');
+    const menuPanes = document.querySelectorAll('.menu-pane');
+    
+    menuTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            menuTabs.forEach(tab => tab.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Hide all panes
+            menuPanes.forEach(pane => pane.classList.remove('active'));
+            // Show corresponding pane
+            const tabId = tab.dataset.tab;
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            faqItems.forEach(faqItem => {
+                faqItem.classList.remove('active');
+                const answer = faqItem.querySelector('.faq-answer');
+                answer.style.maxHeight = null;
+                
+                // Reset the icon
+                const icon = faqItem.querySelector('.faq-icon i');
+                icon.className = 'fas fa-plus';
+            });
+            
+            // Open clicked item if it wasn't already active
+            if (!isActive) {
+                item.classList.add('active');
+                const answer = item.querySelector('.faq-answer');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                
+                // Change the icon
+                const icon = item.querySelector('.faq-icon i');
+                icon.className = 'fas fa-minus';
+            }
+        });
+    });
+    
+    // Smooth Scroll for Anchor Links
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    
+    anchors.forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    });
+    
+    // Animation on Scroll
+    const animateElements = document.querySelectorAll('[data-aos]');
+    
+    const observerOptions = {
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    animateElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // Parallax Effect for Hero Section
+    const heroSection = document.querySelector('.hero');
+    const heroImage = document.querySelector('.hero-bg');
+    
+    if (heroSection && heroImage) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            const sectionTop = heroSection.offsetTop;
+            const sectionHeight = heroSection.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition <= sectionTop + sectionHeight) {
+                const translateY = (scrollPosition - sectionTop) * 0.3;
+                heroImage.style.transform = `translateY(${translateY}px)`;
+            }
+        });
+    }
+    
+    // Form Submission (Example)
+    const reservationForm = document.querySelector('.reservation-form');
+    
+    if (reservationForm) {
+        reservationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const date = this.querySelector('#date').value;
+            const time = this.querySelector('#time').value;
+            const persons = this.querySelector('#persons').value;
+            
+            // Simulate API call (would be replaced with actual API call)
+            setTimeout(() => {
+                console.log('Reservation submitted:', {
+                    date,
+                    time,
+                    persons
+                });
+                
+                // Show success message with animation
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Réservation confirmée !';
+                submitBtn.style.backgroundColor = '#4CAF50';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = '';
+                    
+                    // Show notification
+                    const notification = document.createElement('div');
+                    notification.className = 'reservation-notification';
+                    notification.innerHTML = '<i class="fas fa-check-circle"></i> Merci ! Votre réservation a été prise en compte. Nous vous contacterons rapidement pour la confirmer.';
+                    document.body.appendChild(notification);
+                    
+                    // Animation
+                    setTimeout(() => {
+                        notification.classList.add('show');
+                    }, 100);
+                    
+                    // Remove notification after 5 seconds
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                        setTimeout(() => {
+                            document.body.removeChild(notification);
+                        }, 300);
+                    }, 5000);
+                }, 2000);
+            }, 1500);
+        });
+    }
+});
+</script>
+
+</body>
+</html>
+
