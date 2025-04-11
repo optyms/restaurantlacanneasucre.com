@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prestations | La Canne à Sucre</title>
+  <style>
+    :root {
+      --color-primary: #a9441b;
+      --color-secondary: #f7c04a;
+      --color-bg: #fffdf9;
+      --color-dark: #1f1f1f;
+      --color-accent: #e88e2d;
+      --font-title: 'Georgia', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--color-primary);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    header nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .cta-header {
+      background-color: var(--color-secondary);
+      color: black;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .hero {
+      background-image: url('./Medias/images/veau-bannanes-plantain-focus.jpg'); /* Exemple */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #cc6f1f;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-family: var(--font-title);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background-color: var(--color-accent);
+      display: block;
+      margin: 0.5rem auto 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-title);
+    }
+
+    .faq {
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .faq-question {
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .faq-answer {
+      padding: 0 1rem 1rem;
+      display: none;
+      color: #444;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    footer {
+      background: var(--color-primary);
+      color: white;
+      padding: 3rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-grid h4 {
+      margin-bottom: 1rem;
+      font-family: var(--font-title);
+    }
+
+    .footer-grid a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .map {
+      margin-top: 2rem;
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+
+    .modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.modal-content h2 {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+
+
+.modal-content form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-content form label {
+  margin-top: 0.5rem;
+}
+
+.modal-content form input,
+.modal-content form select {
+  width: 100%;
+}
+
+.modal-content form textarea {
+  grid-column: 1 / -1;
+  resize: vertical;
+}
+
+.modal-content form button {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+/* Responsive : une seule colonne sur petit écran */
+@media (max-width: 600px) {
+  .modal-content form {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><strong>La Canne à Sucre</strong></div>
+    <nav>
+      <!--a href="#">Notre Histoire</a>
+      <a href="#">La carte</a>
+      <a href="#">Contact</a>
+      <a href="#">Prestations</a-->
+    </nav>
+    <!--a href="#" class="cta-header">Réserver une table</a-->
+    <button class="btn-primary">📅 Demander un devis gratuit</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Privatisez notre restaurant pour un événement inoubliable !</h1>
+      <p>Mariages, anniversaires, soirées à thème, événements d’entreprise… Offrez à vos invités une expérience culinaire unique aux saveurs créoles et africaines.</p>
+      <button class="btn-primary">📅 Demander un devis gratuit</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Autres prestations</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🎶 Soirées à thème</h3>
+        <p>Musique live, danse, culture créole et africaine dans une ambiance conviviale et festive.</p>
+      </div>
+      <div class="card">
+        <h3>🍽️ Service traiteur</h3>
+        <p>Livraison de plats créoles et africains pour vos événements (minimum requis).</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ✅ CTA intermédiaire -->
+  <section class="section" style="text-align: center; padding-top: 2rem;">
+    <button class="btn-primary">📅 Demander un devis gratuit</button>
+  </section>
+
+  <section class="section">
+    <div class="faq">
+      <h2 class="section-title">Questions fréquentes</h2>
+      <div class="faq-item">
+        <div class="faq-question">Quels types de plats proposez-vous ? <span>➕</span></div>
+        <div class="faq-answer">Nous proposons des plats typiquement créoles et africains, faits maison avec des produits frais.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Les plats sont-ils très épicés ? <span>➕</span></div>
+        <div class="faq-answer">Nous adaptons le niveau d’épices selon les préférences de nos clients.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Faut-il réserver à l’avance ? <span>➕</span></div>
+        <div class="faq-answer">Oui, la réservation est fortement recommandée, surtout les week-ends.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Nous trouver</h2>
+    <iframe class="map" src="https://maps.google.com/maps?q=6%20Rue%20du%2014%20Juillet,%2030100%20Al%C3%A8s&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+  </section>
+
+
+    <!-- ✅ Section CTA finale, épurée et élégante -->
+    <section class="section" style="background-color: #fff3e6; text-align: center; padding: 4rem 2rem;">
+        <h2 style="font-family: var(--font-title); font-size: 2rem; margin-bottom: 1rem;">Prêt à vivre une expérience culinaire inoubliable ?</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Demandez dès maintenant un devis gratuit pour privatiser notre restaurant ou profiter de nos prestations traiteur.</p>
+        <button class="btn-primary">📅 Demander un devis gratuit</button>
+    </section>
+
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>La Canne à Sucre</h4>
+        <p>Une expérience gastronomique authentique mêlant les saveurs créoles et africaines au cœur d'Alès.</p>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <p>Mardi - Samedi : 12h–14h30 / 19h–22h30</p>
+        <p>Dimanche : 12h–15h</p>
+        <p>Lundi : Fermé</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>📍 6 Rue du 14 Juillet, 30100 Alès</p>
+        <p>📞 06 51 84 15 61</p>
+        <p>📧 contact@restaurantcanneasucre.fr</p>
+      </div>
+      <div>
+        <h4>Suivez-nous</h4>
+        <a href="#">📸 Instagram</a>
+        <a href="#">📘 Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ✅ Modal de demande de devis -->
+<div id="quoteModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Demander un devis gratuit</h2>
+      <form action="mailto:contact@lacanneasucre.com" method="POST" enctype="text/plain">
+        <div>
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="Nom" required>
+        </div>
+        <div>
+          <label for="email">Adresse email</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+        <div>
+          <label for="phone">Téléphone</label>
+          <input type="tel" id="phone" name="Téléphone">
+        </div>
+        <div>
+          <label for="service">Service souhaité</label>
+          <select id="service" name="Service">
+            <option>Privatisation du restaurant</option>
+            <option>Service traiteur</option>
+            <option>Soirée à thème</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <label for="message">Détails de la demande</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Précisez la date, le nombre de personnes, vos attentes..."></textarea>
+        </div>
+        <div style="grid-column: 1 / -1;">
+          <button type="submit" class="btn-primary" style="width: 100%;">📨 Envoyer la demande</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        parent.classList.toggle('open');
+        const icon = item.querySelector('span');
+        icon.textContent = parent.classList.contains('open') ? '➖' : '➕';
+      });
+    });
+
+
+
+// Modal form logic
+const modal = document.getElementById('quoteModal');
+  const closeModal = document.querySelector('.close-modal');
+  const buttons = document.querySelectorAll('.btn-primary');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      if (button.textContent.includes('Demander un devis')) {
+        e.preventDefault();
+        modal.classList.remove('hidden');
+      }
+    });
+  });
+
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+
+
+  </script>
+</body>
+</html>
