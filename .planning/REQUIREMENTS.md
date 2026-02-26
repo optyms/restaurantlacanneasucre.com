@@ -17,16 +17,16 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Formulaire de Reservation
 
-- [ ] **FORM-01**: Formulaire HTML natif remplace l'iframe Go High Level (Optyms) dans la section reservation
-- [ ] **FORM-02**: Champs du formulaire : prenom, nom, telephone, email, date, creneau horaire, nombre de convives
-- [ ] **FORM-03**: Creneaux horaires fixes proposes : service Midi (12h, 12h30, 13h, 13h30) et Soir (19h, 19h30, 20h, 20h30, 21h)
-- [ ] **FORM-04**: Le lundi est bloque dans le datepicker (jour de fermeture)
-- [ ] **FORM-05**: Les dates passees sont bloquees dans le datepicker (min = aujourd'hui)
-- [ ] **FORM-06**: Validation client-side : champs requis, format telephone francais (+33 / 06-07), format email, date valide
+- [x] **FORM-01**: Formulaire HTML natif remplace l'iframe Go High Level (Optyms) dans la section reservation
+- [x] **FORM-02**: Champs du formulaire : prenom, nom, telephone, email, date, creneau horaire, nombre de convives
+- [x] **FORM-03**: Creneaux horaires fixes proposes : service Midi (12h, 12h30, 13h, 13h30) et Soir (19h, 19h30, 20h, 20h30, 21h)
+- [x] **FORM-04**: Le lundi est bloque dans le datepicker (jour de fermeture)
+- [x] **FORM-05**: Les dates passees sont bloquees dans le datepicker (min = aujourd'hui)
+- [x] **FORM-06**: Validation client-side : champs requis, format telephone francais (+33 / 06-07), format email, date valide
 - [ ] **FORM-07**: Feedback visuel de succes apres soumission reussie (message inline)
 - [ ] **FORM-08**: Feedback visuel d'erreur en cas de probleme (erreur reseau, validation serveur)
-- [ ] **FORM-09**: Champ honeypot cache pour protection anti-spam
-- [ ] **FORM-10**: Formulaire responsive et mobile-friendly (coherent avec le design existant du site)
+- [x] **FORM-09**: Champ honeypot cache pour protection anti-spam
+- [x] **FORM-10**: Formulaire responsive et mobile-friendly (coherent avec le design existant du site)
 
 ### Backend & API
 
@@ -44,7 +44,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Code & Migration
 
-- [ ] **CODE-01**: Nouveau JavaScript du formulaire de reservation dans un fichier JS separe (pas inline dans index.html)
+- [x] **CODE-01**: Nouveau JavaScript du formulaire de reservation dans un fichier JS separe (pas inline dans index.html)
 - [ ] **MIGR-01**: Iframe Go High Level (Optyms) supprimee de index.html et remplacee par le nouveau formulaire
 
 ## v2 Requirements
@@ -89,16 +89,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-03 | Phase 1 | Complete |
 | INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Complete |
-| FORM-01 | Phase 2 | Pending |
-| FORM-02 | Phase 2 | Pending |
-| FORM-03 | Phase 2 | Pending |
-| FORM-04 | Phase 2 | Pending |
-| FORM-05 | Phase 2 | Pending |
-| FORM-06 | Phase 2 | Pending |
+| FORM-01 | Phase 2 | Complete |
+| FORM-02 | Phase 2 | Complete |
+| FORM-03 | Phase 2 | Complete |
+| FORM-04 | Phase 2 | Complete |
+| FORM-05 | Phase 2 | Complete |
+| FORM-06 | Phase 2 | Complete |
 | FORM-07 | Phase 2 | Pending |
 | FORM-08 | Phase 2 | Pending |
-| FORM-09 | Phase 2 | Pending |
-| FORM-10 | Phase 2 | Pending |
+| FORM-09 | Phase 2 | Complete |
+| FORM-10 | Phase 2 | Complete |
 | BACK-01 | Phase 1 | Complete |
 | BACK-02 | Phase 1 | Complete |
 | BACK-03 | Phase 1 | Complete |
@@ -107,7 +107,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SMS-01 | Phase 1 | Complete |
 | SMS-02 | Phase 1 | Complete |
 | SMS-03 | Phase 1 | Complete |
-| CODE-01 | Phase 2 | Pending |
+| CODE-01 | Phase 2 | Complete |
 | MIGR-01 | Phase 2 | Pending |
 
 **Coverage:**

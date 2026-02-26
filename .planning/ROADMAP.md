@@ -74,5 +74,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Backend et Infrastructure | 2/2 | Complete | 2026-02-26 |
-| 2. Formulaire et Integration Frontend | 0/2 | Not started | - |
+| 2. Formulaire et Integration Frontend | 1/2 | In Progress|  |
 | 3. Mise en Production et Decommissionnement GHL | 0/2 | Not started | - |
