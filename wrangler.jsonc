@@ -8,7 +8,7 @@
     {
       "binding": "DB",
       "database_name": "reservations_staging",
-      "database_id": "<STAGING_DB_ID>"
+      "database_id": "e30e1610-95ec-4380-a717-fc839e2b6a0d"
     }
   ],
   "env": {
@@ -17,7 +17,7 @@
         {
           "binding": "DB",
           "database_name": "reservations_prod",
-          "database_id": "<PROD_DB_ID>"
+          "database_id": "5e1064c0-766f-40a9-99a3-344f02123522"
         }
       ]
     },
@@ -26,7 +26,7 @@
         {
           "binding": "DB",
           "database_name": "reservations_staging",
-          "database_id": "<STAGING_DB_ID>"
+          "database_id": "e30e1610-95ec-4380-a717-fc839e2b6a0d"
         }
       ]
     }
