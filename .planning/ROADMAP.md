@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, TypeScript, _routes.json, secrets Twilio)
+- [~] 01-01-PLAN.md — Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, TypeScript, _routes.json, secrets Twilio) — Tasks 1-2 done, Task 3 checkpoint:human-action
 - [ ] 01-02-PLAN.md — Pages Function POST /api/reservations (validation Zod, D1 insert, Twilio SMS x2, tests curl)
 
 ### Phase 2: Formulaire et Integration Frontend
@@ -73,6 +73,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend et Infrastructure | 0/2 | Not started | - |
+| 1. Backend et Infrastructure | 0/2 | In progress (01-01 Tasks 1-2 done, Task 3 checkpoint) | - |
 | 2. Formulaire et Integration Frontend | 0/2 | Not started | - |
 | 3. Mise en Production et Decommissionnement GHL | 0/2 | Not started | - |
