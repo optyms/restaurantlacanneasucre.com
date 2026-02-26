@@ -23,8 +23,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FORM-04**: Le lundi est bloque dans le datepicker (jour de fermeture)
 - [x] **FORM-05**: Les dates passees sont bloquees dans le datepicker (min = aujourd'hui)
 - [x] **FORM-06**: Validation client-side : champs requis, format telephone francais (+33 / 06-07), format email, date valide
-- [ ] **FORM-07**: Feedback visuel de succes apres soumission reussie (message inline)
-- [ ] **FORM-08**: Feedback visuel d'erreur en cas de probleme (erreur reseau, validation serveur)
+- [x] **FORM-07**: Feedback visuel de succes apres soumission reussie (message inline)
+- [x] **FORM-08**: Feedback visuel d'erreur en cas de probleme (erreur reseau, validation serveur)
 - [x] **FORM-09**: Champ honeypot cache pour protection anti-spam
 - [x] **FORM-10**: Formulaire responsive et mobile-friendly (coherent avec le design existant du site)
 
@@ -45,7 +45,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Code & Migration
 
 - [x] **CODE-01**: Nouveau JavaScript du formulaire de reservation dans un fichier JS separe (pas inline dans index.html)
-- [ ] **MIGR-01**: Iframe Go High Level (Optyms) supprimee de index.html et remplacee par le nouveau formulaire
+- [x] **MIGR-01**: Iframe Go High Level (Optyms) supprimee de index.html et remplacee par le nouveau formulaire
 
 ## v2 Requirements
 
@@ -95,8 +95,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORM-04 | Phase 2 | Complete |
 | FORM-05 | Phase 2 | Complete |
 | FORM-06 | Phase 2 | Complete |
-| FORM-07 | Phase 2 | Pending |
-| FORM-08 | Phase 2 | Pending |
+| FORM-07 | Phase 2 | Complete |
+| FORM-08 | Phase 2 | Complete |
 | FORM-09 | Phase 2 | Complete |
 | FORM-10 | Phase 2 | Complete |
 | BACK-01 | Phase 1 | Complete |
@@ -108,7 +108,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SMS-02 | Phase 1 | Complete |
 | SMS-03 | Phase 1 | Complete |
 | CODE-01 | Phase 2 | Complete |
-| MIGR-01 | Phase 2 | Pending |
+| MIGR-01 | Phase 2 | Complete |
 
 **Coverage:**
 - v1 requirements: 25 total

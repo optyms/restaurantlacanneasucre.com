@@ -13,7 +13,7 @@ Remplacer l'iframe Go High Level par un systeme de reservation en propre : backe
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Backend et Infrastructure** - Worker, D1, Twilio, staging — tout tester sans frontend
-- [ ] **Phase 2: Formulaire et Integration Frontend** - Formulaire HTML natif, validation, UX, suppression iframe GHL
+- [x] **Phase 2: Formulaire et Integration Frontend** - Formulaire HTML natif, validation, UX, suppression iframe GHL (completed 2026-02-26)
 - [ ] **Phase 3: Mise en Production et Decommissionnement GHL** - Validation end-to-end, bascule prod, arret GHL
 
 ## Phase Details
@@ -74,5 +74,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Backend et Infrastructure | 2/2 | Complete | 2026-02-26 |
-| 2. Formulaire et Integration Frontend | 1/2 | In Progress|  |
+| 2. Formulaire et Integration Frontend | 2/2 | Complete   | 2026-02-26 |
 | 3. Mise en Production et Decommissionnement GHL | 0/2 | Not started | - |
