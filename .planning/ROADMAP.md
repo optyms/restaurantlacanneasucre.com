@@ -28,11 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Le proprietaire recoit un SMS de notification avec tous les details de la reservation
   4. Un POST avec un lundi ou une date passee retourne HTTP 400 (validation server-side bloque bien ces cas)
   5. Les environnements staging et production utilisent des bases D1 separees — une reservation de test ne peut pas contaminer la prod
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, _routes.json)
-- [ ] 01-02: Pages Function /api/reservations (validation, D1 insert, Twilio SMS x2, gestion erreurs)
+- [ ] 01-01-PLAN.md — Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, TypeScript, _routes.json, secrets Twilio)
+- [ ] 01-02-PLAN.md — Pages Function POST /api/reservations (validation Zod, D1 insert, Twilio SMS x2, tests curl)
 
 ### Phase 2: Formulaire et Integration Frontend
 **Goal**: Les clients peuvent remplir et soumettre le formulaire de reservation directement sur le site — sans iframe, sans Go High Level
