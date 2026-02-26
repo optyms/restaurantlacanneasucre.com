@@ -46,7 +46,7 @@ const reservationSchema = z.object({
   date:       z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Format de date YYYY-MM-DD requis'),
   time_slot:  z.enum(VALID_TIME_SLOTS),
   party_size: z.number().int().min(1).max(20),
-  honeypot:   z.string().max(0).optional(),
+  honeypot:   z.string().optional(),
 });
 
 type ReservationInput = z.infer<typeof reservationSchema>;
