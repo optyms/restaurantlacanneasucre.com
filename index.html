@@ -3501,65 +3501,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Form Submission (Example)
-    const reservationForm = document.querySelector('.reservation-form');
-    
-    if (reservationForm) {
-        reservationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
-            submitBtn.disabled = true;
-            
-            // Collect form data
-            const date = this.querySelector('#date').value;
-            const time = this.querySelector('#time').value;
-            const persons = this.querySelector('#persons').value;
-            
-            // Simulate API call (would be replaced with actual API call)
-            setTimeout(() => {
-                console.log('Reservation submitted:', {
-                    date,
-                    time,
-                    persons
-                });
-                
-                // Show success message with animation
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Réservation confirmée !';
-                submitBtn.style.backgroundColor = '#4CAF50';
-                
-                // Reset form after delay
-                setTimeout(() => {
-                    this.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.backgroundColor = '';
-                    
-                    // Show notification
-                    const notification = document.createElement('div');
-                    notification.className = 'reservation-notification';
-                    notification.innerHTML = '<i class="fas fa-check-circle"></i> Merci ! Votre réservation a été prise en compte. Nous vous contacterons rapidement pour la confirmer.';
-                    document.body.appendChild(notification);
-                    
-                    // Animation
-                    setTimeout(() => {
-                        notification.classList.add('show');
-                    }, 100);
-                    
-                    // Remove notification after 5 seconds
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                        setTimeout(() => {
-                            document.body.removeChild(notification);
-                        }, 300);
-                    }, 5000);
-                }, 2000);
-            }, 1500);
-        });
-    }
 });
 </script>
 

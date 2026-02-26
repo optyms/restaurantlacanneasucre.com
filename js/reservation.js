@@ -8,6 +8,7 @@
   // --- Constants (must match functions/api/reservations.ts) ---
   const FRENCH_PHONE_RE = /^(?:(?:\+33|0033)[67]|0[67])\d{8}$/;
   const FIELDS = ['first_name', 'last_name', 'phone', 'email', 'date', 'time_slot', 'party_size'];
+  const API_URL = '/api/reservations';
 
   // --- State ---
   const touched = {};
@@ -212,9 +213,33 @@
       honeypot:   document.getElementById('website') ? document.getElementById('website').value : '',
     };
 
-    // fetch() call implemented in Plan 02-02
-    console.log('Submit payload:', payload);
-    setSubmitting(false);
+    // POST to /api/reservations
+    (async function () {
+      try {
+        var res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          showSuccess(payload);
+        } else {
+          var errorMessage = 'Une erreur est survenue. Veuillez réessayer.';
+          try {
+            var data = await res.json();
+            if (data.error) errorMessage = data.error;
+          } catch (jsonErr) { /* ignore JSON parse errors */ }
+          showGlobalError(errorMessage);
+        }
+      } catch (networkErr) {
+        showGlobalError(
+          'Impossible de contacter le serveur. Vérifiez votre connexion et réessayez.'
+        );
+      } finally {
+        setSubmitting(false);
+      }
+    }());
   }
 
   // --- Success state ---
