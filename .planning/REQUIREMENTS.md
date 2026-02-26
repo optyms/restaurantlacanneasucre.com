@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Infrastructure
 
-- [ ] **INFRA-01**: Branche staging creee sur GitHub avec preview URL Cloudflare Pages fonctionnel
-- [ ] **INFRA-02**: Base D1 de production creee et bindee au Worker
-- [ ] **INFRA-03**: Base D1 de staging creee et bindee a l'environnement preview
-- [ ] **INFRA-04**: Configuration Wrangler (wrangler.jsonc) avec bindings D1 et routes
-- [ ] **INFRA-05**: Secrets Twilio (Account SID, Auth Token, sender number, owner number) configures via wrangler secret
+- [x] **INFRA-01**: Branche staging creee sur GitHub avec preview URL Cloudflare Pages fonctionnel
+- [x] **INFRA-02**: Base D1 de production creee et bindee au Worker
+- [x] **INFRA-03**: Base D1 de staging creee et bindee a l'environnement preview
+- [x] **INFRA-04**: Configuration Wrangler (wrangler.jsonc) avec bindings D1 et routes
+- [x] **INFRA-05**: Secrets Twilio (Account SID, Auth Token, sender number, owner number) configures via wrangler secret
 
 ### Formulaire de Reservation
 
@@ -32,7 +32,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **BACK-01**: Pages Function (ou Worker) expose un endpoint POST /api/reservations
 - [x] **BACK-02**: Validation server-side des donnees (miroir de la validation client-side + rejet du lundi + rejet honeypot)
-- [ ] **BACK-03**: Schema D1 : table reservations (id, first_name, last_name, phone, email, date, time_slot, party_size, created_at)
+- [x] **BACK-03**: Schema D1 : table reservations (id, first_name, last_name, phone, email, date, time_slot, party_size, created_at)
 - [x] **BACK-04**: Insertion de la reservation dans D1 apres validation
 - [x] **BACK-05**: Gestion des erreurs avec codes HTTP et messages exploitables par le frontend
 
@@ -84,11 +84,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 1 | Pending |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
-| INFRA-05 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
+| INFRA-04 | Phase 1 | Complete |
+| INFRA-05 | Phase 1 | Complete |
 | FORM-01 | Phase 2 | Pending |
 | FORM-02 | Phase 2 | Pending |
 | FORM-03 | Phase 2 | Pending |
@@ -101,7 +101,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORM-10 | Phase 2 | Pending |
 | BACK-01 | Phase 1 | Complete |
 | BACK-02 | Phase 1 | Complete |
-| BACK-03 | Phase 1 | Pending |
+| BACK-03 | Phase 1 | Complete |
 | BACK-04 | Phase 1 | Complete |
 | BACK-05 | Phase 1 | Complete |
 | SMS-01 | Phase 1 | Complete |
