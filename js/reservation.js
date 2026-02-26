@@ -21,6 +21,7 @@
   const submitBtn   = document.getElementById('submit-btn');
   const dateInput   = document.getElementById('date');
   const globalError = document.getElementById('form-error-global');
+  const reservationInfo = document.getElementById('reservation-info');
 
   if (!form) return; // Guard: form not present on this page
 
@@ -260,6 +261,7 @@
     }
 
     form.hidden = true;
+    if (reservationInfo) reservationInfo.hidden = true;
     if (successDiv) successDiv.hidden = false;
   }
 
@@ -290,6 +292,7 @@
 
     if (successDiv) successDiv.hidden = true;
     form.hidden = false;
+    if (reservationInfo) reservationInfo.hidden = false;
 
     // Re-set date min after reset (form.reset() may clear the min attribute in some browsers)
     setDateMin();

@@ -104,14 +104,29 @@ function buildClientSms(data: ReservationInput): string {
   );
 }
 
-function buildOwnerSms(data: ReservationInput, id: string): string {
-  const service = data.time_slot <= '14:00' ? 'midi' : 'soir';
-  const idShort = id.slice(0, 8);
+function buildOwnerSms(data: ReservationInput): string {
+  const service = data.time_slot <= '14:00' ? 'Midi' : 'Soir';
+  // Format date: "le mercredi 28/02/2026"
+  const d = new Date(data.date + 'T12:00:00Z');
+  const joursSemaine = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  const jour = joursSemaine[d.getUTCDay()];
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const yyyy = d.getUTCFullYear();
+  const dateFormatted = `${jour} ${dd}/${mm}/${yyyy}`;
+
   return (
-    `Nouvelle resa #${idShort}\n` +
-    `${data.first_name} ${data.last_name} - ${data.party_size} pers.\n` +
-    `${data.date} ${data.time_slot} (${service})\n` +
-    `Tel: ${data.phone} | ${data.email}`
+    `Hello Chantale,\n\n` +
+    `Nouvelle reservation:\n\n` +
+    `Client: ${data.first_name} ${data.last_name}\n\n` +
+    `Date et heure: le ${dateFormatted} a ${data.time_slot}\n\n` +
+    `Nombre de convives: ${data.party_size}\n\n` +
+    `Service: ${service}\n\n` +
+    `Bonne journee\n` +
+    `--Samuel\n\n` +
+    `-------------------------------------\n` +
+    `Message automatique - Ne pas repondre\n` +
+    `-------------------------------------`
   );
 }
 
@@ -173,13 +188,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return jsonResponse({ error: 'Erreur lors de l\'enregistrement de la reservation' }, 500);
   }
 
-  // 7. Send both SMS in parallel AFTER D1 insert (reservation already saved)
-  const clientSms  = buildClientSms(data);
-  const ownerSms   = buildOwnerSms(data, id);
+  // 7. Send SMS in parallel AFTER D1 insert (reservation already saved)
+  //    - Client: confirmation SMS
+  //    - Owner (Chantale): notification SMS to 0651841561
+  //    - CC (Samuel): same notification SMS to 0619614643
+  const OWNER_PHONE = '+33651841561';
+  const CC_PHONE    = '+33619614643';
 
-  const [clientResult, ownerResult] = await Promise.allSettled([
+  const clientSms  = buildClientSms(data);
+  const ownerSms   = buildOwnerSms(data);
+
+  const [clientResult, ownerResult, ccResult] = await Promise.allSettled([
     sendSms(env, data.phone, clientSms),
-    sendSms(env, env.TWILIO_OWNER_NUMBER, ownerSms),
+    sendSms(env, OWNER_PHONE, ownerSms),
+    sendSms(env, CC_PHONE, ownerSms),
   ]);
 
   // 8. Build response — include warnings if SMS failed
@@ -192,6 +214,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   if (ownerResult.status === 'rejected') {
     console.error('SMS proprietaire echoue:', ownerResult.reason);
     warnings.push('SMS proprietaire echoue');
+  }
+  if (ccResult.status === 'rejected') {
+    console.error('SMS copie echoue:', ccResult.reason);
+    // Don't warn user about CC failure — internal concern
   }
 
   const responseBody: Record<string, unknown> = {
