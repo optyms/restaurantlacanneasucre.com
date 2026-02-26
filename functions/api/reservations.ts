@@ -90,6 +90,20 @@ async function sendSms(env: Env, to: string, body: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
+// Utility: normalize French phone to E.164 format for Twilio
+// ---------------------------------------------------------------------------
+
+function toE164(phone: string): string {
+  // Already in +33 format
+  if (phone.startsWith('+33')) return phone;
+  // 0033 format
+  if (phone.startsWith('0033')) return '+33' + phone.slice(4);
+  // 06/07 local format → +336/+337
+  if (phone.startsWith('0')) return '+33' + phone.slice(1);
+  return phone;
+}
+
+// ---------------------------------------------------------------------------
 // SMS templates (GSM-7 safe — no ê, ë, î, ï, ô, û, œ)
 // ---------------------------------------------------------------------------
 
@@ -199,7 +213,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const ownerSms   = buildOwnerSms(data);
 
   const [clientResult, ownerResult, ccResult] = await Promise.allSettled([
-    sendSms(env, data.phone, clientSms),
+    sendSms(env, toE164(data.phone), clientSms),
     sendSms(env, OWNER_PHONE, ownerSms),
     sendSms(env, CC_PHONE, ownerSms),
   ]);

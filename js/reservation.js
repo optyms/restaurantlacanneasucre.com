@@ -260,8 +260,8 @@
         'est r\u00e9serv\u00e9e le ' + dateFormatted + ' \u00e0 ' + payload.time_slot + '.';
     }
 
-    form.hidden = true;
-    if (reservationInfo) reservationInfo.hidden = true;
+    form.style.display = 'none';
+    if (reservationInfo) reservationInfo.style.display = 'none';
     if (successDiv) successDiv.hidden = false;
   }
 
@@ -291,8 +291,8 @@
     clearGlobalError();
 
     if (successDiv) successDiv.hidden = true;
-    form.hidden = false;
-    if (reservationInfo) reservationInfo.hidden = false;
+    form.style.display = '';
+    if (reservationInfo) reservationInfo.style.display = '';
 
     // Re-set date min after reset (form.reset() may clear the min attribute in some browsers)
     setDateMin();
