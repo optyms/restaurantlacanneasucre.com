@@ -12,7 +12,7 @@ Remplacer l'iframe Go High Level par un systeme de reservation en propre : backe
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Backend et Infrastructure** - Worker, D1, Twilio, staging — tout tester sans frontend
+- [x] **Phase 1: Backend et Infrastructure** - Worker, D1, Twilio, staging — tout tester sans frontend
 - [ ] **Phase 2: Formulaire et Integration Frontend** - Formulaire HTML natif, validation, UX, suppression iframe GHL
 - [ ] **Phase 3: Mise en Production et Decommissionnement GHL** - Validation end-to-end, bascule prod, arret GHL
 
@@ -31,8 +31,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [~] 01-01-PLAN.md — Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, TypeScript, _routes.json, secrets Twilio) — Tasks 1-2 done, Task 3 checkpoint:human-action
-- [ ] 01-02-PLAN.md — Pages Function POST /api/reservations (validation Zod, D1 insert, Twilio SMS x2, tests curl)
+- [x] 01-01-PLAN.md — Provisionnement D1 et configuration Wrangler (bases prod + staging, wrangler.jsonc, TypeScript, _routes.json, secrets Twilio) — Tasks 1-2 done (Task 3 = secrets Twilio configures)
+- [x] 01-02-PLAN.md — Pages Function POST /api/reservations (validation Zod, D1 insert, Twilio SMS x2, tests curl) — COMPLETE 2026-02-26
 
 ### Phase 2: Formulaire et Integration Frontend
 **Goal**: Les clients peuvent remplir et soumettre le formulaire de reservation directement sur le site — sans iframe, sans Go High Level
@@ -73,6 +73,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Backend et Infrastructure | 0/2 | In progress (01-01 Tasks 1-2 done, Task 3 checkpoint) | - |
+| 1. Backend et Infrastructure | 2/2 | Complete | 2026-02-26 |
 | 2. Formulaire et Integration Frontend | 0/2 | Not started | - |
 | 3. Mise en Production et Decommissionnement GHL | 0/2 | Not started | - |

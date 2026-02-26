@@ -30,17 +30,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Backend & API
 
-- [ ] **BACK-01**: Pages Function (ou Worker) expose un endpoint POST /api/reservations
-- [ ] **BACK-02**: Validation server-side des donnees (miroir de la validation client-side + rejet du lundi + rejet honeypot)
+- [x] **BACK-01**: Pages Function (ou Worker) expose un endpoint POST /api/reservations
+- [x] **BACK-02**: Validation server-side des donnees (miroir de la validation client-side + rejet du lundi + rejet honeypot)
 - [ ] **BACK-03**: Schema D1 : table reservations (id, first_name, last_name, phone, email, date, time_slot, party_size, created_at)
-- [ ] **BACK-04**: Insertion de la reservation dans D1 apres validation
-- [ ] **BACK-05**: Gestion des erreurs avec codes HTTP et messages exploitables par le frontend
+- [x] **BACK-04**: Insertion de la reservation dans D1 apres validation
+- [x] **BACK-05**: Gestion des erreurs avec codes HTTP et messages exploitables par le frontend
 
 ### SMS
 
-- [ ] **SMS-01**: SMS de confirmation envoye au client via Twilio apres reservation (en francais, avec nom du restaurant, date, service midi/soir, nb convives, tel pour annuler)
-- [ ] **SMS-02**: SMS de notification envoye au proprietaire via Twilio (details complets : nom, tel, email, date, service, nb convives)
-- [ ] **SMS-03**: Templates SMS en francais, contenu sous 160 caracteres par segment (eviter les caracteres accentues pour rester en GSM-7)
+- [x] **SMS-01**: SMS de confirmation envoye au client via Twilio apres reservation (en francais, avec nom du restaurant, date, service midi/soir, nb convives, tel pour annuler)
+- [x] **SMS-02**: SMS de notification envoye au proprietaire via Twilio (details complets : nom, tel, email, date, service, nb convives)
+- [x] **SMS-03**: Templates SMS en francais, contenu sous 160 caracteres par segment (eviter les caracteres accentues pour rester en GSM-7)
 
 ### Code & Migration
 
@@ -99,14 +99,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FORM-08 | Phase 2 | Pending |
 | FORM-09 | Phase 2 | Pending |
 | FORM-10 | Phase 2 | Pending |
-| BACK-01 | Phase 1 | Pending |
-| BACK-02 | Phase 1 | Pending |
+| BACK-01 | Phase 1 | Complete |
+| BACK-02 | Phase 1 | Complete |
 | BACK-03 | Phase 1 | Pending |
-| BACK-04 | Phase 1 | Pending |
-| BACK-05 | Phase 1 | Pending |
-| SMS-01 | Phase 1 | Pending |
-| SMS-02 | Phase 1 | Pending |
-| SMS-03 | Phase 1 | Pending |
+| BACK-04 | Phase 1 | Complete |
+| BACK-05 | Phase 1 | Complete |
+| SMS-01 | Phase 1 | Complete |
+| SMS-02 | Phase 1 | Complete |
+| SMS-03 | Phase 1 | Complete |
 | CODE-01 | Phase 2 | Pending |
 | MIGR-01 | Phase 2 | Pending |
 
