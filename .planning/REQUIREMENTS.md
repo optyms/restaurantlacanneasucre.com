@@ -84,37 +84,39 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | - | Pending |
-| INFRA-02 | - | Pending |
-| INFRA-03 | - | Pending |
-| INFRA-04 | - | Pending |
-| INFRA-05 | - | Pending |
-| FORM-01 | - | Pending |
-| FORM-02 | - | Pending |
-| FORM-03 | - | Pending |
-| FORM-04 | - | Pending |
-| FORM-05 | - | Pending |
-| FORM-06 | - | Pending |
-| FORM-07 | - | Pending |
-| FORM-08 | - | Pending |
-| FORM-09 | - | Pending |
-| FORM-10 | - | Pending |
-| BACK-01 | - | Pending |
-| BACK-02 | - | Pending |
-| BACK-03 | - | Pending |
-| BACK-04 | - | Pending |
-| BACK-05 | - | Pending |
-| SMS-01 | - | Pending |
-| SMS-02 | - | Pending |
-| SMS-03 | - | Pending |
-| CODE-01 | - | Pending |
-| MIGR-01 | - | Pending |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| FORM-01 | Phase 2 | Pending |
+| FORM-02 | Phase 2 | Pending |
+| FORM-03 | Phase 2 | Pending |
+| FORM-04 | Phase 2 | Pending |
+| FORM-05 | Phase 2 | Pending |
+| FORM-06 | Phase 2 | Pending |
+| FORM-07 | Phase 2 | Pending |
+| FORM-08 | Phase 2 | Pending |
+| FORM-09 | Phase 2 | Pending |
+| FORM-10 | Phase 2 | Pending |
+| BACK-01 | Phase 1 | Pending |
+| BACK-02 | Phase 1 | Pending |
+| BACK-03 | Phase 1 | Pending |
+| BACK-04 | Phase 1 | Pending |
+| BACK-05 | Phase 1 | Pending |
+| SMS-01 | Phase 1 | Pending |
+| SMS-02 | Phase 1 | Pending |
+| SMS-03 | Phase 1 | Pending |
+| CODE-01 | Phase 2 | Pending |
+| MIGR-01 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 25 total
-- Mapped to phases: 0
-- Unmapped: 25
+- Mapped to phases: 25
+- Unmapped: 0
+
+**Note:** Phase 3 (Production Cutover) is an operational phase with no v1 requirements assigned. Its success criteria derive from the research pitfall documentation (GHL migration risk, SMS delivery validation). All 25 v1 requirements are covered by Phases 1 and 2.
 
 ---
 *Requirements defined: 2026-02-26*
-*Last updated: 2026-02-26 after initial definition*
+*Last updated: 2026-02-26 — traceability updated after roadmap creation*
